@@ -2,7 +2,6 @@ from sqlalchemy import create_engine
 import os
 from sqlalchemy.orm import sessionmaker , declarative_base
 # from urllib.parse import quote_plus
-
 # password = quote_plus("Tharun@08")
 
 url = "mysql+pymysql://root:Tharun%4008@localhost:3306/recipe_db"
