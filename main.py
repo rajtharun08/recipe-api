@@ -51,7 +51,7 @@ def search_recipe(title: str = None,cuisine: str = None,calories: str = None,tot
 
     query = comparison_helper(query, tables.Recipe.total_time, total_time)
     query = comparison_helper(query, tables.Recipe.rating, rating)
-    
+
     results = query.all()
     if calories:
         filtered = []
