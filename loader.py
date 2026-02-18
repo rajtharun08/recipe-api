@@ -1,22 +1,22 @@
 import json
 import math
-from database import SessionLocal,engine
-from tables import Recipe 
-import tables
-
-tables.Base.metadata.create_all(bind=engine)
-
+from database import SessionLocal, engine
+from tables import Recipe, Base
 
 def load():
-    with open('./US_recipes_null.json', 'r',encoding='utf-8') as file:
+    Base.metadata.create_all(bind=engine)
+    with open('US_recipes_null.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
-    db = SessionLocal()
-    try:
-        for item in data:
+
+    recipes_list = data.values() if isinstance(data, dict) else data
+
+    with SessionLocal() as db:
+        for item in recipes_list:
             for key, value in item.items():
                 if isinstance(value, float) and math.isnan(value):
                     item[key] = None
-            n_recipe= Recipe(
+            
+            n_recipe = Recipe(
                 cuisine=item.get("cuisine"),
                 title=item.get("title"),
                 rating=item.get("rating"),
@@ -29,10 +29,6 @@ def load():
             )
             db.add(n_recipe)
         db.commit()
-    except Exception as e:
-        db.rollback()
-    finally:
-        db.close()
 
 if __name__ == "__main__":
     load()
