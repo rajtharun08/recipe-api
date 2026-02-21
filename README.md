@@ -1,10 +1,7 @@
 # Recipe Management System API
 
 A high-performance RESTful API built with FastAPI and SQLAlchemy for
-managing and searching a database of over 8,000 recipes. This project
-demonstrates advanced backend engineering concepts, specifically
-focusing on dynamic query filtering, resource lifecycle management, and
-application-level data processing.
+managing and searching a database of over 8,000 recipes. 
 
 ------------------------------------------------------------------------
 
@@ -49,7 +46,7 @@ application-level data processing.
 Update the connection URL in `database.py` with your MySQL credentials.
 
 **Note:** If your password contains special characters like `@`, ensure
-they are URL-encoded (e.g., `@` becomes `%40`).
+they are URL-encoded (e.g., `@` becomes `%40`)
 
 ### 4. Ingest Data
 
@@ -87,6 +84,9 @@ frontend to handle large datasets efficiently.
       "total": 8213,
       "data": [...]
     }
+<p align="center">
+        <img src="images/endpoint1.png" width="900">
+</p>
 
 ------------------------------------------------------------------------
 
@@ -98,10 +98,6 @@ mathematical comparisons.
 **URL:**
 
     GET /api/recipes/search
-
-<p align="center">
-        <img src="images/endpoint1.png" width="900">
-</p>
 
 **Supported Filters:**
 
